@@ -9,12 +9,14 @@ import UniversityAlliancesSection from './UniversityAlliancesSection';
 
 
 
-const Home = () => {
+const Home = (props) => {
   const navigate = useNavigate();
 
   const handleApplyNowClick = () => {
     // Navigate to the "ApplyNow" page
     navigate.push('/APPLYNOW');
+    props.showalert(" Accepting Applications for Next Cohort Starting on 11th September. Apply Now.", "knowledge.tech! ")
+    
     
   };
   const handleCYBERSECURITYLearnMoreClick = () => {
@@ -438,7 +440,7 @@ const Home = () => {
         <div className="video_slider mx-auto mt-3">
           <div className="slick-slider slick-initialized">
             <div className="slick-list">
-              <div className="slick-track" style={{ width: '359px', opacity: 1, transform: 'translate3d(0px, 0px, 0px)' }}>
+              <div className="slick-track" style={{ width: '359px', opacity: '1', transform: 'translate3d(0px, 0px, 0px)' }}>
                 <div data-index="0" className="slick-slide slick-active slick-current" tabIndex="-1" aria-hidden="false" style={{ outline: 'none', width: '359px' }}>
                   <div>
                     <div tabIndex="-1" style={{ width: '100%', display: 'inline-block' }}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import Home from './components/Home';
@@ -28,31 +28,42 @@ import Alert from './components/Alert';
 
 
 function App() {
+  const [alert, setAlert] = useState(null);
+   const showAlert = (message,type) =>{
+    setAlert({
+      msg: message,
+      type: type
+    })
+    setTimeout(() =>{
+      setAlert(null);
+    },3000)
+   }
+
   return (
     
     <Router>
       
-      <Alert/>
-      <Navbar />
+      <Alert alert={alert}/>
+      <Navbar showAlert={() => showAlert(' Accepting Applications for Next Cohort Starting on 11th September. Apply Now.', 'knowledge.tech! ')}/>
       <Routes>
-        <Route exact path="/Home" element={<Home />} />
-        <Route exact path="/Login" element={<Login />} />
-        <Route exact path="/Exuctive Team" element={<ExuctiveTeam />} />
+        <Route exact path="/Home" element={<Home showAlert={showAlert}/>}  />
+        <Route exact path="/Login" element={<Login  showAlert={() => showAlert('Accepting Applications for Next Cohort Starting on 11th September. Apply Now.', 'knowledge.tech! ')} />} />
+        <Route exact path="/Exuctive Team" element={<ExuctiveTeam  showAlert={() => showAlert('Accepting Applications for Next Cohort Starting on 11th September. Apply Now. ', 'knowledge.tech! ')}/>} />
         
-        <Route exact path="/APPLYNOW" element={<APPLYNOW />} />
-        <Route exact path="/HOW TO APPLY" element={<HOWTOAPPLY />} />
-        <Route exact path="/Create an account" element={<Createanaccount />} />
+        <Route exact path="/APPLYNOW" element={<APPLYNOW  showAlert={() => showAlert('Accepting Applications for Next Cohort Starting on 11th September. Apply Now.', 'success')}/>} />
+        <Route exact path="/HOW TO APPLY" element={<HOWTOAPPLY  showAlert={() => showAlert('Accepting Applications for Next Cohort Starting on 11th September. Apply Now.', 'success')} />} />
+        <Route exact path="/Create an account" element={<Createanaccount  showAlert={() => showAlert('Accepting Applications for Next Cohort Starting on 11th September. Apply Now.', 'success')}/>} />
        
-<Route exact path="/FAQS" element={<FAQS />} />
-<Route exact path ='/KNOWLEDGE PARTINERS' element={<KNOWLEDGEPARTINERS/>}/>
-<Route exact path='/UNIVERSTY ALLIANCES' element={<UNIVERSTYALLIANCES/>}/>
-<Route exact path='/TESTIMONIALS' element={<TESTIMONIALS/>} />
-<Route exact path='/TECH LAUNCHPAD' element={<TECHLAUNCHPAD/>}/>
-<Route exact path='/DATA SCIENCES' element={<DATASCIENCES/>}/>
-<Route exact path='/CYBER SECURITY' element={<CYBERSECURITY/>}/>
-<Route exact path='/WEB DEVELOPMENT' element={<WEBDEVELOPMENT/>}/>
-<Route exact path='/SOFT SKILLS' element={<SOFTSKILLS/>}/>
-<Route exact path='/CONTACT US'element={<CONTACTUS/>}/>
+<Route exact path="/FAQS" element={<FAQS  showAlert={() => showAlert('Login page open is sucessfully', 'success')}/>} />
+<Route exact path ='/KNOWLEDGE PARTINERS' element={<KNOWLEDGEPARTINERS  showAlert={() => showAlert('Login page open is sucessfully', 'success')}/>}/>
+<Route exact path='/UNIVERSTY ALLIANCES' element={<UNIVERSTYALLIANCES  showAlert={() => showAlert('Login page open is sucessfully', 'success')}/>}/>
+<Route exact path='/TESTIMONIALS' element={<TESTIMONIALS  showAlert={() => showAlert('Login page open is sucessfully', 'success')}/>} />
+<Route exact path='/TECH LAUNCHPAD' element={<TECHLAUNCHPAD  showAlert={() => showAlert('Login page open is sucessfully', 'success')}/>}/>
+<Route exact path='/DATA SCIENCES' element={<DATASCIENCES  showAlert={() => showAlert('Login page open is sucessfully', 'success')}/>}/>
+<Route exact path='/CYBER SECURITY' element={<CYBERSECURITY showAlert={() => showAlert('Login page open is sucessfully', 'success')}/>}/>
+<Route exact path='/WEB DEVELOPMENT' element={<WEBDEVELOPMENT showAlert={() => showAlert('Login page open is sucessfully', 'success')}/>}/>
+<Route exact path='/SOFT SKILLS' element={<SOFTSKILLS showAlert={() => showAlert('Login page open is sucessfully', 'success')}/>}/>
+<Route exact path='/CONTACT US'element={<CONTACTUS showAlert={() => showAlert('Login page open is sucessfully', 'success')}/>}/>
       </Routes>
      
     </Router>
